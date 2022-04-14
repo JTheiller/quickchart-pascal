@@ -29,6 +29,7 @@ object Form1: TForm1
       Align = alRight
       Caption = 'Download'
       TabOrder = 1
+      OnClick = btnDownloadClick
       ExplicitLeft = 4
       ExplicitHeight = 81
     end

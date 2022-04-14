@@ -14,6 +14,7 @@ type
     ImageChart: TImage;
     btnDownload: TBitBtn;
     MemoUrl: TMemo;
+    procedure btnDownloadClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -25,6 +26,22 @@ var
 
 implementation
 
+uses
+  QuickChart.Download;
+
 {$R *.dfm}
+
+procedure TForm1.btnDownloadClick(Sender: TObject);
+var
+  LStream: TMemoryStream;
+begin
+  LStream := TQuickChartDownload.GetAsStream(MemoUrl.Text);
+  try
+    ImageChart.Picture.Graphic.LoadFromStream( LStream );
+    ImageChart.Invalidate;
+  finally
+    LStream.Free;
+  end;
+end;
 
 end.
