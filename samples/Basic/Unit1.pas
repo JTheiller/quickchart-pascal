@@ -34,11 +34,17 @@ uses
 procedure TForm1.btnDownloadClick(Sender: TObject);
 var
   LStream: TMemoryStream;
+  LImgPNG: TPngImage;
 begin
-  LStream := TQuickChartDownload.GetAsStream(MemoUrl.Text);
+  LStream := TQuickChartDownload.GetAsStream( MemoUrl.Text );
   try
-    ImageChart.Picture.Graphic.LoadFromStream( LStream );
-    ImageChart.Invalidate;
+    LImgPNG := TPngImage.Create;
+    try
+      LImgPNG.LoadFromStream(LStream);
+      ImageChart.Picture.Graphic := LImgPNG;
+    finally
+      LImgPNG.Free;
+    end;
   finally
     LStream.Free;
   end;
