@@ -16,7 +16,7 @@ A pascal client for the QuickChart.io chart API using OOP (Object-Oriented Progr
 //...
  
 uses
-  QuickStart;
+  QuickChart;
 
 procedure TForm1.button1Click(Sender: TObject);
 const
