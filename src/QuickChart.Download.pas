@@ -14,7 +14,7 @@ type
 implementation
 
 uses
-  Winapi.Windows, Winapi.WinInet;
+  Winapi.Windows, Winapi.WinInet, IdURI;
 
 { QuickChartDownload }
 
@@ -28,6 +28,8 @@ var
   dwTimeOut    : DWORD;
 begin
   Result := TMemoryStream.Create;
+
+  AUrl := TIdURI.PathEncode(AUrl);
 
   hSession := InternetOpen('usersession', INTERNET_OPEN_TYPE_PRECONFIG, nil, nil, 0);
   if not Assigned(hSession) then Exit;
