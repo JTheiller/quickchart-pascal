@@ -3,7 +3,8 @@ unit QuickChart;
 interface
 
 uses
-  System.Classes, Vcl.Graphics;
+  System.Classes, Vcl.Graphics,
+  QuickChart.Chart;
 
 type
   TQuickChart = class
@@ -44,7 +45,8 @@ type
     function SetEncoding(const Value: String): TQuickChart;
     function SetVersion(const Value: String): TQuickChart;
 
-    function SetChart(const Value: String): TQuickChart;
+    function SetChart(const Value: String): TQuickChart; overload;
+    function SetChart(const ChartDTO: TQuickChartDTO): TQuickChart; overload;
     function Download(var Stream: TMemoryStream): TQuickChart; overload;
     function Download(Picture: TPicture): TQuickChart; overload;
     function Download(FileName: String): TQuickChart; overload;
@@ -153,6 +155,12 @@ function TQuickChart.SetChart(const Value: String): TQuickChart;
 begin
   Result := Self;
   Fchart := Value;
+end;
+
+function TQuickChart.SetChart(const ChartDTO: TQuickChartDTO): TQuickChart;
+begin
+  Result := Self;
+  SetChart(ChartDTO.AsJson)
 end;
 
 function TQuickChart.Download(var Stream: TMemoryStream): TQuickChart;
