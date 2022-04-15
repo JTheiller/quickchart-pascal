@@ -4,14 +4,67 @@ A pascal client for the QuickChart.io chart API using OOP (Object-Oriented Progr
 
 [QuickChart](https://quickchart.io/) is a service that generates images of charts from a URL.  Because these charts are simple images, they are very easy to embed in non-dynamic environments such as email, SMS, chat rooms, and so on.
 
+## Official github
+- [JTheiller/quickchart-pascal](https://github.com/JTheiller/quickchart-pascal)
+
+## Installation
+- Delphi
+- Boss
+
+## ⚡️ Usage - Quickstart
+```Pascal - Delphi
+//...
+ 
+uses
+  QuickStart;
+
+procedure TForm1.button1Click(Sender: TObject);
+const
+  JSON_TEXT ='{'
+            +'  "type":"bar",'
+            +'  "data":{'
+            +'    "labels":["January","February","March","April","May"],'
+            +'    "datasets":['
+            +'      {'
+            +'        "label":"Dogs",'
+            +'        "data":[50,60,70,180,190]'
+            +'      },'
+            +'      {'
+            +'        "label":"Cats",'
+            +'        "data":[100,200,300,400,500'
+            +'        ]'
+            +'      }'
+            +'    ]'
+            +'  }'
+            +'}';
+begin
+  TQuickChart
+    .New
+      .SetWidth(500)
+      .SetHeight(300)
+      .SetDevicePixelRatio(2.0)
+      .SetBackgroundColor('transparent')
+      .SetFormat('png')
+      .SetEncoding('url')
+      .SetVersion('2.9.4')
+      .SetChart( JSON_TEXT )
+      .Download( 'QuickChart.png' )
+    .Free;
+end;
+
+end.
+```
+
 ## 📝 Doc API
 For more details on configuring your chart, reference the QuickChart documentation.
 - https://quickchart.io/documentation/
 - https://quickchart.io/gallery/
 - https://quickchart.io/chart-maker/
 
-## Official github
-- [JTheiller/quickchart-pascal](https://github.com/JTheiller/quickchart-pascal)
+## Tools
+- https://jsonformatter.curiousconcept.com/
+- https://jsonformatter.org/json-pretty-print
+- https://github.com/HashLoad/boss
 
 ## 👨‍💻👩‍💻 Contributing
 
