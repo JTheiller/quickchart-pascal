@@ -1,3 +1,12 @@
+{*******************************************************}
+{                                                       }
+{         quickchart.oi Pascal Client Library           }
+{             Developer: Joathan Theiller               }
+{                  Copyright(c) 2022                    }
+{    https://github.com/jtheiller/quickchart-pascal     }
+{                                                       }
+{*******************************************************}
+
 unit QuickChart.Types;
 
 interface
