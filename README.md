@@ -11,6 +11,10 @@ A pascal client for the QuickChart.io chart API using OOP (Object-Oriented Progr
 - Delphi
 - Boss
 
+## Lib dependencies
+- System.JSON
+- System.Generics.Collections
+
 ## ⚡️ Usage - Quickstart
 ```Pascal - Delphi
 //...
@@ -47,9 +51,53 @@ begin
       .SetFormat('png')
       .SetEncoding('url')
       .SetVersion('2.9.4')
-      .SetChart( JSON_TEXT )
+      .SetChart( JSON_TEXT ) //<----- JsonText
       .Download( 'QuickChart.png' )
     .Free;
+end;
+
+end.
+```
+### Using Object DTO
+```Pascal - Delphi
+//...
+ 
+uses
+  QuickChart, QuickChart.Chart, QuickChart.Types;
+
+procedure TForm1.button1Click(Sender: TObject);
+var
+  LChartDTO: TQuickChartDTO;
+begin
+  LChartDTO := TQuickChartDTO.New;
+
+  LChartDTO
+    .Data
+      .LabelNew(['January','February','March','April','May'])
+      .DatasetAdd( TDatasetDTO
+                     .New
+                       .SetLabel('Dogs')
+                       .DataNew( [50, 60, 70, 180, 190] )
+                     )
+      .DatasetAdd( TDatasetDTO
+                     .New
+                       .SetLabel('Cats')
+                       .DataNew( [100, 200, 300, 400, 500] )
+                     );
+  TQuickChart
+    .New
+      .SetWidth(500)
+      .SetHeight(300)
+      .SetDevicePixelRatio(2.0)
+      .SetBackgroundColor('transparent')
+      .SetFormat('png')
+      .SetEncoding('url')
+      .SetVersion('2.9.4')
+      .SetChart( LChartDTO ) //<----- ObjectDTO
+      .Download( 'QuickChart.png' )
+    .Free;
+
+  LChartDTO.Free;
 end;
 
 end.
