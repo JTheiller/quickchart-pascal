@@ -1,3 +1,12 @@
+{*******************************************************}
+{                                                       }
+{         quickchart.oi Pascal Client Library           }
+{             Developer: Joathan Theiller               }
+{                  Copyright(c) 2022                    }
+{    https://github.com/jtheiller/quickchart-pascal     }
+{                                                       }
+{*******************************************************}
+
 unit Unit1;
 
 interface
@@ -26,6 +35,8 @@ type
     Label5: TLabel;
     EditBrackGroundColorHex: TEdit;
     Label6: TLabel;
+    PanelTitle: TPanel;
+    Label8: TLabel;
     procedure btnDownloadClick(Sender: TObject);
   private
     { Private declarations }

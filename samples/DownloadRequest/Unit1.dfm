@@ -15,11 +15,11 @@ object Form1: TForm1
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
-    Top = 0
+    Top = 49
     Width = 719
     Height = 49
     Align = alTop
-    TabOrder = 0
+    TabOrder = 1
     object btnDownload: TBitBtn
       AlignWithMargins = True
       Left = 566
@@ -27,7 +27,7 @@ object Form1: TForm1
       Width = 149
       Height = 41
       Align = alRight
-      Caption = 'Download'
+      Caption = 'Load Image Stream'
       TabOrder = 1
       OnClick = btnDownloadClick
     end
@@ -51,16 +51,16 @@ object Form1: TForm1
   end
   object Panel2: TPanel
     Left = 0
-    Top = 49
+    Top = 98
     Width = 719
-    Height = 364
+    Height = 315
     Align = alClient
-    TabOrder = 1
+    TabOrder = 2
     object ImageChart: TImage
       Left = 1
       Top = 1
       Width = 717
-      Height = 362
+      Height = 313
       Align = alClient
       Center = True
       Proportional = True
@@ -70,6 +70,40 @@ object Form1: TForm1
       ExplicitTop = 184
       ExplicitWidth = 105
       ExplicitHeight = 105
+    end
+  end
+  object PanelTitle: TPanel
+    Left = 0
+    Top = 0
+    Width = 719
+    Height = 49
+    Align = alTop
+    BevelOuter = bvNone
+    Color = 13134864
+    Ctl3D = True
+    ParentBackground = False
+    ParentCtl3D = False
+    TabOrder = 0
+    object Label8: TLabel
+      AlignWithMargins = True
+      Left = 3
+      Top = 3
+      Width = 713
+      Height = 43
+      Align = alClient
+      Alignment = taCenter
+      Caption = 
+        'Client library Pascal: quickchart.io'#13'https://github.com/JTheille' +
+        'r/quickchart-pascal/tree/main/samples/DownloadRequest'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -16
+      Font.Name = 'Roboto'
+      Font.Style = [fsBold]
+      ParentFont = False
+      Layout = tlCenter
+      ExplicitWidth = 619
+      ExplicitHeight = 38
     end
   end
 end

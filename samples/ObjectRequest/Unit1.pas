@@ -1,3 +1,12 @@
+{*******************************************************}
+{                                                       }
+{         quickchart.oi Pascal Client Library           }
+{             Developer: Joathan Theiller               }
+{                  Copyright(c) 2022                    }
+{    https://github.com/jtheiller/quickchart-pascal     }
+{                                                       }
+{*******************************************************}
+
 unit Unit1;
 
 interface
@@ -29,6 +38,8 @@ type
     Label6: TLabel;
     Label7: TLabel;
     EditFileName: TEdit;
+    PanelTitle: TPanel;
+    Label8: TLabel;
     procedure btnDownloadClick(Sender: TObject);
   private
     { Private declarations }
@@ -66,19 +77,6 @@ const
             +'  }'
             +'}';
 begin
-//  TQuickChart
-//    .New
-//      .SetWidth(500)
-//      .SetHeight(300)
-//      .SetDevicePixelRatio(2.0)
-//      .SetBackgroundColor('transparent')
-//      .SetFormat('png')
-//      .SetEncoding('url')
-//      .SetVersion('2.9.4')
-//      .SetChartInfo( JSON_TEXT )
-//      .Download( 'QuickChart.png' ) //Optional
-//    .Free;
-
   TQuickChart
     .New
       .SetWidth(SpinEditWidth.Value)

@@ -2,7 +2,7 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Form1'
-  ClientHeight = 458
+  ClientHeight = 521
   ClientWidth = 790
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -15,19 +15,19 @@ object Form1: TForm1
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
-    Top = 0
+    Top = 49
     Width = 313
-    Height = 458
+    Height = 472
     Align = alLeft
-    TabOrder = 0
+    TabOrder = 1
     object btnDownload: TBitBtn
       AlignWithMargins = True
       Left = 4
-      Top = 394
+      Top = 408
       Width = 305
       Height = 60
       Align = alBottom
-      Caption = 'Download from Image1'
+      Caption = 'Load Image'
       TabOrder = 3
       OnClick = btnDownloadClick
     end
@@ -36,7 +36,7 @@ object Form1: TForm1
       Left = 4
       Top = 159
       Width = 305
-      Height = 229
+      Height = 243
       Align = alClient
       Lines.Strings = (
         '{'
@@ -173,17 +173,17 @@ object Form1: TForm1
   end
   object Panel2: TPanel
     Left = 313
-    Top = 0
+    Top = 49
     Width = 477
-    Height = 458
+    Height = 472
     Align = alClient
-    TabOrder = 1
+    TabOrder = 2
     object Image1: TImage
       AlignWithMargins = True
       Left = 4
       Top = 51
       Width = 469
-      Height = 403
+      Height = 417
       Align = alClient
       Center = True
       Proportional = True
@@ -214,6 +214,40 @@ object Form1: TForm1
         ExplicitWidth = 30
         ExplicitHeight = 13
       end
+    end
+  end
+  object PanelTitle: TPanel
+    Left = 0
+    Top = 0
+    Width = 790
+    Height = 49
+    Align = alTop
+    BevelOuter = bvNone
+    Color = 13134864
+    Ctl3D = True
+    ParentBackground = False
+    ParentCtl3D = False
+    TabOrder = 0
+    object Label8: TLabel
+      AlignWithMargins = True
+      Left = 3
+      Top = 3
+      Width = 784
+      Height = 43
+      Align = alClient
+      Alignment = taCenter
+      Caption = 
+        'Client library Pascal: quickchart.io'#13'https://github.com/JTheille' +
+        'r/quickchart-pascal/tree/main/samples/ObjectRequest'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -16
+      Font.Name = 'Roboto'
+      Font.Style = [fsBold]
+      ParentFont = False
+      Layout = tlCenter
+      ExplicitWidth = 593
+      ExplicitHeight = 38
     end
   end
 end

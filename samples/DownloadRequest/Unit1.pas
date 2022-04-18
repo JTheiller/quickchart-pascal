@@ -1,3 +1,12 @@
+{*******************************************************}
+{                                                       }
+{         quickchart.oi Pascal Client Library           }
+{             Developer: Joathan Theiller               }
+{                  Copyright(c) 2022                    }
+{    https://github.com/jtheiller/quickchart-pascal     }
+{                                                       }
+{*******************************************************}
+
 unit Unit1;
 
 interface
@@ -14,6 +23,8 @@ type
     ImageChart: TImage;
     btnDownload: TBitBtn;
     MemoUrl: TMemo;
+    PanelTitle: TPanel;
+    Label8: TLabel;
     procedure btnDownloadClick(Sender: TObject);
   private
     { Private declarations }
