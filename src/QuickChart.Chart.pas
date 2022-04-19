@@ -83,11 +83,34 @@ type
   TTitle = class
   private
     FDisplay: Boolean;
+    FPosition: TChartPosition;
+    FFontSize: Integer;
+    FFontFamily: String;
+    FFontColor: String;
+    FFontStyle: TChartFontStyle;
+    FPadding: Integer;
+    FLineHeight: Double;
     FText: String;
   published
     property Display: Boolean read FDisplay;
+    property Position: TChartPosition read FPosition;
+    property FontSize: Integer read FFontSize;
+    property FontFamily: String read FFontFamily;
+    property FontColor: String read FFontColor;
+    property FontStyle: TChartFontStyle read FFontStyle;
+    property Padding: Integer read FPadding;
+    property LineHeight: Double read FLineHeight;
     property Text: string read FText;
+  public
+    constructor Create;
     function SetDisplay(Value: Boolean): TTitle;
+    function SetPosition(Value: TChartPosition): TTitle;
+    function SetFontSize(Value: Integer): TTitle;
+    function SetFontFamily(Value: String): TTitle;
+    function SetFontColor(Value: String): TTitle;
+    function SetFontStyle(Value: TChartFontStyle): TTitle;
+    function SetPadding(Value: Integer): TTitle;
+    function SetLineHeight(Value: Double): TTitle;
     function SetText(Value: String): TTitle;
   end;
 
@@ -228,10 +251,63 @@ end;
 
 { TTitle }
 
+constructor TTitle.Create;
+begin
+  SetDisplay(False);
+  SetFontSize(12);
+  SetFontFamily('sans-serif');
+  SetFontColor('#666666');
+  SetFontStyle(bold);
+  SetPadding(10);
+  SetLineHeight(1.2);
+end;
+
 function TTitle.SetDisplay(Value: Boolean): TTitle;
 begin
   Result := Self;
   FDisplay := Value;
+end;
+
+function TTitle.SetFontColor(Value: String): TTitle;
+begin
+  Result := Self;
+  FFontColor := Value;
+end;
+
+function TTitle.SetFontFamily(Value: String): TTitle;
+begin
+  Result := Self;
+  FFontFamily := Value;
+end;
+
+function TTitle.SetFontSize(Value: Integer): TTitle;
+begin
+  Result := Self;
+  FFontSize := Value;
+end;
+
+function TTitle.SetFontStyle(Value: TChartFontStyle): TTitle;
+begin
+  Result := Self;
+  FFontStyle := Value;
+end;
+
+function TTitle.SetLineHeight(Value: Double): TTitle;
+begin
+  Result := Self;
+  FLineHeight := Value;
+end;
+
+function TTitle.SetPadding(Value: Integer): TTitle;
+begin
+  Result := Self;
+  FPadding := Value;
+end;
+
+function TTitle.SetPosition(Value: TChartPosition): TTitle;
+begin
+  Result := Self;
+  FPosition := Value;
 end;
 
 function TTitle.SetText(Value: String): TTitle;

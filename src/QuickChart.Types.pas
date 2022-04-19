@@ -29,6 +29,16 @@ type
                 GraphViz,
                 WordClouds);
 
+  TChartPosition = (top,
+                    left,
+                    bottom,
+                    right,
+                    center);
+
+  TChartFontStyle = (normal,
+                    bold,
+                    italic);
+
 implementation
 
 end.
