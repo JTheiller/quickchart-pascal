@@ -33,7 +33,10 @@ type
                     left,
                     bottom,
                     right,
-                    center);
+                    start,
+                    center,
+                    &end);
+
 
   TChartFontStyle = (normal,
                     bold,

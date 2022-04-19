@@ -23,6 +23,8 @@ type
   TTitle = class;
   TLayout = class;
   TPadding = class;
+  TLegend = class;
+  TLabels = class;
 
   TQuickChartDTO = class
   private
@@ -76,9 +78,11 @@ type
   private
     FTitle: TTitle;
     FLayout: TLayout;
+    FLegend: TLegend;
   published
     property Title: TTitle read FTitle;
     property Layout: TLayout read FLayout;
+    property Legend: TLegend read FLegend;
   public
     constructor Create;
     destructor Destroy; override;
@@ -137,6 +141,44 @@ type
     function SetRight(Value: Integer): TPadding;
     function SetTop(Value: Integer): TPadding;
     function SetBottom(Value: Integer): TPadding;
+  end;
+
+  TLegend = class
+  private
+    FDisplay: Boolean;
+    FPosition: TChartPosition;
+    FAlign: TChartPosition;
+    FFullWidth: Boolean;
+    FReverse: Boolean;
+    FLabels: TLabels;
+  public
+    constructor Create;
+    destructor Destroy; override;
+    function SetDisplay(Value: Boolean): TLegend;
+    function SetPosition(Value: TChartPosition): TLegend;
+    function SetAlign(Value: TChartPosition): TLegend;
+    function SetFullWidth(Value: Boolean): TLegend;
+    function SetReverse(Value: Boolean): TLegend;
+  end;
+
+  TLabels = class
+  private
+    FBoxWidth: Integer;
+    FFontSize: Integer;
+    FFontFamily: String;
+    FFontColor: String;
+    FFontStyle: TChartFontStyle;
+    FPadding: Integer;
+    FUsePointStyle: Boolean;
+  public
+    constructor Create;
+    function SetBoxWidth(Value: Integer): TLabels;
+    function SetFontSize(Value: Integer): TLabels;
+    function SetFontFamily(Value: String): TLabels;
+    function SetFontColor(Value: String): TLabels;
+    function SetFontStyle(Value: TChartFontStyle): TLabels;
+    function SetPadding(Value: Integer): TLabels;
+    function SetUsePointStyle(Value: Boolean): TLabels;
   end;
 
 implementation
@@ -267,10 +309,12 @@ begin
   inherited;
   FTitle := TTitle.Create;
   FLayout := TLayout.Create;
+  FLegend := TLegend.Create;
 end;
 
 destructor TOptions.Destroy;
 begin
+  FLegend.Free;
   FLayout.Free;
   FTitle.Free;
   inherited;
@@ -356,6 +400,53 @@ begin
   inherited;
 end;
 
+{ TLegend }
+
+constructor TLegend.Create;
+begin
+  SetDisplay(True);
+  SetPosition(Top);
+  SetAlign(center);
+  SetFullWidth(True);
+  FLabels := TLabels.Create;
+end;
+
+destructor TLegend.Destroy;
+begin
+  FLabels.Free;
+  inherited;
+end;
+
+function TLegend.SetAlign(Value: TChartPosition): TLegend;
+begin
+  Result := Self;
+  FAlign := Value;
+end;
+
+function TLegend.SetDisplay(Value: Boolean): TLegend;
+begin
+  Result := Self;
+  FDisplay := Value;
+end;
+
+function TLegend.SetFullWidth(Value: Boolean): TLegend;
+begin
+  Result := Self;
+  FFullWidth := Value;
+end;
+
+function TLegend.SetPosition(Value: TChartPosition): TLegend;
+begin
+  Result := Self;
+  FPosition := Value;
+end;
+
+function TLegend.SetReverse(Value: Boolean): TLegend;
+begin
+  Result := Self;
+  FReverse := Value;
+end;
+
 { TPadding }
 
 function TPadding.SetBottom(Value: Integer): TPadding;
@@ -380,5 +471,60 @@ function TPadding.SetTop(Value: Integer): TPadding;
 begin
   Result := Self;
   FTop := Value;
+end;
+
+{ TLabels }
+
+constructor TLabels.Create;
+begin
+  SetBoxWidth(40);
+  SetFontSize(12);
+  SetFontFamily('sans-serif');
+  SetFontColor('#666666');
+  SetFontStyle(normal);
+  SetPadding(10);
+  SetUsePointStyle(False);
+end;
+
+function TLabels.SetBoxWidth(Value: Integer): TLabels;
+begin
+  Result := Self;
+  FBoxWidth := Value;
+end;
+
+function TLabels.SetFontColor(Value: String): TLabels;
+begin
+  Result := Self;
+  FFontColor := Value;
+end;
+
+function TLabels.SetFontFamily(Value: String): TLabels;
+begin
+  Result := Self;
+  FFontFamily := Value;
+end;
+
+function TLabels.SetFontSize(Value: Integer): TLabels;
+begin
+  Result := Self;
+  FFontSize := Value;
+end;
+
+function TLabels.SetFontStyle(Value: TChartFontStyle): TLabels;
+begin
+  Result := Self;
+  FFontStyle := Value;
+end;
+
+function TLabels.SetPadding(Value: Integer): TLabels;
+begin
+  Result := Self;
+  FPadding := Value;
+end;
+
+function TLabels.SetUsePointStyle(Value: Boolean): TLabels;
+begin
+  Result := Self;
+  FUsePointStyle := Value;
 end;
 
