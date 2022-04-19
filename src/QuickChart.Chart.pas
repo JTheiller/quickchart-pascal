@@ -19,14 +19,18 @@ uses
 type
   TDataDTO = class;
   TDatasetDTO = class;
+  TOptions = class;
+  TTitle = class;
 
   TQuickChartDTO = class
   private
-    FData: TDataDTO;
     FType: TChartType;
+    FData: TDataDTO;
+    FOptions: TOptions;
   published
-    property Data: TDataDTO read FData;
     property &Type: TChartType read FType write FType;
+    property Data: TDataDTO read FData;
+    property Options: TOptions read FOptions;
   public
     constructor Create;
     destructor Destroy; override;
@@ -38,11 +42,11 @@ type
   TDataDTO = class
   private
     FDatasets: TArray<TDatasetDTO>;
-    FLabels: TArray<string>;
+    FLabels: TArray<String>;
     function AddDataset: TDatasetDTO;
   published
     property Datasets: TArray<TDatasetDTO> read FDatasets;
-    property Labels: TArray<string> read FLabels write FLabels;
+    property Labels: TArray<String> read FLabels write FLabels;
   public
     constructor Create;
     destructor Destroy; override;
@@ -54,16 +58,37 @@ type
 
   TDatasetDTO = class
   private
-    FLabel: string;
+    FLabel: String;
     FData: TArray<Double>;
   public
     constructor Create;
     class function New: TDatasetDTO;
-    property &Label: string read FLabel write FLabel;
+    property &Label: String read FLabel write FLabel;
     property Data: TArray<Double> read FData;
     function SetLabel(Value: String): TDatasetDTO;
     function DataNew(Value: Double): TDatasetDTO; overload;
     function DataNew(Values: Array of Double): TDatasetDTO; overload;
+  end;
+
+  TOptions = class
+  private
+    FTitle: TTitle;
+  published
+    property Title: TTitle read FTitle;
+  public
+    constructor Create;
+    destructor Destroy; override;
+  end;
+
+  TTitle = class
+  private
+    FDisplay: Boolean;
+    FText: String;
+  published
+    property Display: Boolean read FDisplay;
+    property Text: string read FText;
+    function SetDisplay(Value: Boolean): TTitle;
+    function SetText(Value: String): TTitle;
   end;
 
 implementation
@@ -74,10 +99,12 @@ constructor TQuickChartDTO.Create;
 begin
   inherited;
   FData := TDataDTO.Create;
+  FOptions := TOptions.Create;
 end;
 
 destructor TQuickChartDTO.Destroy;
 begin
+  FOptions.Free;
   FData.Free;
   inherited;
 end;
@@ -183,6 +210,34 @@ function TDatasetDTO.SetLabel(Value: String): TDatasetDTO;
 begin
   Result := Self;
   FLabel := Value;
+end;
+
+{ TOptions }
+
+constructor TOptions.Create;
+begin
+  inherited;
+  FTitle := TTitle.Create;
+end;
+
+destructor TOptions.Destroy;
+begin
+  FTitle.Free;
+  inherited;
+end;
+
+{ TTitle }
+
+function TTitle.SetDisplay(Value: Boolean): TTitle;
+begin
+  Result := Self;
+  FDisplay := Value;
+end;
+
+function TTitle.SetText(Value: String): TTitle;
+begin
+  Result := Self;
+  FText := Value;
 end;
 
 end.
