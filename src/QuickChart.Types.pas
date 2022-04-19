@@ -37,6 +37,10 @@ type
                     center,
                     &end);
 
+  TChartAxisType = (linear,
+                    logarithmic,
+                    category,
+                    time);
 
   TChartFontStyle = (normal,
                     bold,
