@@ -103,6 +103,11 @@ end;
 end.
 ```
 
+## Screenshots Samples
+|   |   |   |
+|---|---|---|
+| <img src="./screenshots/DownloadRequest.png">| <img src="./screenshots/ObjectRequest.png">| <img src="./screenshots/ChartRequest.png">|
+
 ## 📝 Doc API
 For more details on configuring your chart, reference the QuickChart documentation.
 - https://quickchart.io/documentation/
