@@ -21,6 +21,8 @@ type
   TDatasetDTO = class;
   TOptions = class;
   TTitle = class;
+  TLayout = class;
+  TPadding = class;
 
   TQuickChartDTO = class
   private
@@ -73,8 +75,10 @@ type
   TOptions = class
   private
     FTitle: TTitle;
+    FLayout: TLayout;
   published
     property Title: TTitle read FTitle;
+    property Layout: TLayout read FLayout;
   public
     constructor Create;
     destructor Destroy; override;
@@ -112,6 +116,27 @@ type
     function SetPadding(Value: Integer): TTitle;
     function SetLineHeight(Value: Double): TTitle;
     function SetText(Value: String): TTitle;
+  end;
+
+  TLayout = class
+  private
+    FPadding: TPadding;
+  public
+    constructor Create;
+    destructor Destroy; override;
+  end;
+
+  TPadding = class
+  private
+    FLeft: Integer;
+    FRight: Integer;
+    FTop: Integer;
+    FBottom: Integer;
+  public
+    function SetLeft(Value: Integer): TPadding;
+    function SetRight(Value: Integer): TPadding;
+    function SetTop(Value: Integer): TPadding;
+    function SetBottom(Value: Integer): TPadding;
   end;
 
 implementation
@@ -241,10 +266,12 @@ constructor TOptions.Create;
 begin
   inherited;
   FTitle := TTitle.Create;
+  FLayout := TLayout.Create;
 end;
 
 destructor TOptions.Destroy;
 begin
+  FLayout.Free;
   FTitle.Free;
   inherited;
 end;
@@ -316,4 +343,42 @@ begin
   FText := Value;
 end;
 
-end.
+{ TLayout }
+
+constructor TLayout.Create;
+begin
+  FPadding := TPadding.Create;
+end;
+
+destructor TLayout.Destroy;
+begin
+  FPadding.Free;
+  inherited;
+end;
+
+{ TPadding }
+
+function TPadding.SetBottom(Value: Integer): TPadding;
+begin
+  Result := Self;
+  FBottom := Value;
+end;
+
+function TPadding.SetLeft(Value: Integer): TPadding;
+begin
+  Result := Self;
+  FLeft := Value;
+end;
+
+function TPadding.SetRight(Value: Integer): TPadding;
+begin
+  Result := Self;
+  FRight := Value;
+end;
+
+function TPadding.SetTop(Value: Integer): TPadding;
+begin
+  Result := Self;
+  FTop := Value;
+end;
+
